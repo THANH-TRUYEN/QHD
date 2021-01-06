@@ -122,10 +122,43 @@ void Baitap3()
 }
 
 // select
+int a5[21][21];
+int T[2000000];
+int b[21];
+long long turnOff(long long s, int j){
+    return s&~(1<<j);
+}
+int getBit(long long s, int j)  {
+    return (s >> j)&1;
+}
+long long getMax(long long s){
+    int k=0;
+    for(int j=1;j<=n;j++)
+    if (getBit(s,j-1)==1){
+        k++;
+        b[k]=j;
+    }
+    int Max=0;
+    for(int j=0;j<=k;j++){
+        long long p=turnOff(s,b[j]-1);
+        Max=max(Max,T[p]+a5[k][b[j]]);
+    }
+    return Max;
+}
+long long DPBitMask(){
+    long long maxS=pow(2,n)-1;
+    for(int i=1;i<=maxS;i++){
+        T[i]=getMax(i);
+    }
+    return T[maxS];
+}
 void Baitap4()
 {
   	system("cls");
- 
+ 	cin>>n;
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=n;j++) cin>>a5[i][j];
+    cout<<DPBitMask();
   	getch();  	
 }
 
@@ -182,7 +215,7 @@ main()
   st[3]="4. Bai toan bien doi xau a thanh xau b";
   st[4]="5. SELECT";
   st[5]="<ESC> Ket thuc chuong trinh!";
-  int x0=5,y0=5,chon=0,luuchon,sodong=7,ok=FALSE;
+  int x0=5,y0=5,chon=0,luuchon,sodong=6,ok=FALSE;
   Ve_menu(x0,y0,chon,sodong,st);
   do
   {
