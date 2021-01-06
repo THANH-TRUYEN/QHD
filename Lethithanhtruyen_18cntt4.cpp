@@ -2,6 +2,7 @@
 #include <iostream>
 #include <conio.h>
 #include <math.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -28,33 +29,47 @@ int textcolor(int Color)
 #define CYAN 10
 #define YELLOW 14
 
+const int N=100000;
+long long n;
+long long a[N+1],d[N+1],f[N+1];
+
 // baitoanbacthang
 void Baitap0()
 {
   	system("cls");
-  	int N=100000;
 	int Mod=14062008;
-	bool a[N+1];
+	bool aa[N+1];
 	long long f[N+1];
 	int n,k;
 	 cin>>n>>k;
-	 for(int i=1;i<=n;i++) a[i]=1;
+	 for(int i=1;i<=n;i++) aa[i]=1;
 	 for(int i=1;i<=k;i++) {
 	 int x;
 	 cin>>x;
-	 a[x]=0;
+	 aa[x]=0;
 	 }
 	 f[0]=0, f[1]=1;
 	 for(int i=2;i<=n;i++)
-	 f[i]=a[i]*(f[i-1]+f[i-2])%Mod;
+	 f[i]=aa[i]*(f[i-1]+f[i-2])%Mod;
 	 cout<<f[n];
   	getch();    
 }
 
+//bandia
 void Baitap1()
 {
   	system("cls");
-  
+	cout<<"Nhap n: ";
+  	cin>>n;
+	 for (int i=1;i<=n;i++) cin>>a[i];
+	 d[1]=a[1];
+	 f[1]=a[1];
+	 for (int i=2;i<=n;i++)
+	 {
+	 d[i]=max(max(d[i-2],f[i-1])+a[i],d[i-1]);
+	 f[i]=max(f[i-2],d[i-2])+a[i];
+	 }
+	 cout<<d[n];
   	getch();    
 }
 
