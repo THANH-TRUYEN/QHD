@@ -32,7 +32,8 @@ int textcolor(int Color)
 const int N=100000;
 long long n;
 long long a[N+1],d[N+1],f[N+1];
-int dd[300][300];
+long long dd[1000][1000];
+long long d4[1000][1000];
 
 // baitoanbacthang
 void Baitap0()
@@ -106,7 +107,17 @@ void Baitap2()
 void Baitap3()
 {
   	system("cls");
-  
+  	string sa,sb;
+	cin>>sa>>sb; 
+	d4[0][0]=(sa[0]!=sb[0]);
+	for(int i=1;i<sa.size();i++) d4[i][0]=d4[i-1][0]+1;
+	for(int i=1;i<sb.size();i++) d4[0][i]=d4[0][i-1]+1;
+	for(int i=1;i<sa.size();i++)
+	for(int j=1;j<sb.size();j++)
+	if (sa[i]==sb[j]) d4[i][j]=d4[i-1][j-1];
+	else
+	d4[i][j]=min(d4[i-1][j],min(d4[i][j-1],d4[i-1][j-1]))+1; 
+	cout<<d4[sa.size()-1][sb.size()-1];
   	getch();  	
 }
 
