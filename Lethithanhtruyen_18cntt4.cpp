@@ -209,9 +209,9 @@ main()
 {
   char ch,*st[20]; //Ghi cac dong menu
   system("cls");
-  st[0]="1.Bai toan bac thang";
-  st[1]="2.Bai toan choi ban dia";
-  st[2]="3.Bai toan ve xau Palindrome";
+  st[0]="1. Bai toan bac thang";
+  st[1]="2. Bai toan choi ban dia";
+  st[2]="3. Bai toan ve xau Palindrome";
   st[3]="4. Bai toan bien doi xau a thanh xau b";
   st[4]="5. SELECT";
   st[5]="<ESC> Ket thuc chuong trinh!";
