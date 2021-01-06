@@ -32,6 +32,7 @@ int textcolor(int Color)
 const int N=100000;
 long long n;
 long long a[N+1],d[N+1],f[N+1];
+int dd[300][300];
 
 // baitoanbacthang
 void Baitap0()
@@ -59,7 +60,6 @@ void Baitap0()
 void Baitap1()
 {
   	system("cls");
-	cout<<"Nhap n: ";
   	cin>>n;
 	 for (int i=1;i<=n;i++) cin>>a[i];
 	 d[1]=a[1];
@@ -73,13 +73,36 @@ void Baitap1()
   	getch();    
 }
 
+// xaupalindrome
 void Baitap2()
 {
   	system("cls");
-   
+   	string st;
+	 cin>>st;
+	 int n=st.size();
+	 for(int i=0;i<n;i++) {
+	 dd[i][i]=1;
+	 if (i<n-1) {
+	 if (st[i]==st[i+1]) dd[i][i+1]=1;
+	 else dd[i][i+1]=2;
+	 }
+	 }
+	 for(int l=2;l<=n;l++){
+	 for(int i=0;i<n-l;i++){
+	 int j=i+l;
+	 dd[i][j]=dd[i][i]+dd[i+1][j];
+	 if (st[i]==st[j] && dd[i+1][j-1]==1)
+	dd[i][j]=1;
+	 else
+	 for(int k=i+1;k<=j;k++)
+	 dd[i][j]=min(dd[i][j],dd[i][k]+dd[k+1][j]);
+	 }
+	 }
+	 cout<<dd[0][n-1];
   	getch();    
 }
 
+// xau a thanh xau b
 void Baitap3()
 {
   	system("cls");
@@ -87,6 +110,7 @@ void Baitap3()
   	getch();  	
 }
 
+// select
 void Baitap4()
 {
   	system("cls");
