@@ -172,19 +172,19 @@ void Write(char *s,int x,int y, int color)
 
 void Khung(int x1,int y1,int x2,int y2)
 { int x,y;
-  gotoxy(x1,y1); cout<<"Ã‰";
-  gotoxy(x2,y1); cout<<"Â»";
-  gotoxy(x1,y2); cout<<"Ãˆ";
-  gotoxy(x2,y2); cout<<"Â¼";
+  gotoxy(x1,y1); cout<<"É";
+  gotoxy(x2,y1); cout<<"»";
+  gotoxy(x1,y2); cout<<"È";
+  gotoxy(x2,y2); cout<<"¼";
   for(x=x1+1;x<x2;x++)
 	 {
-		gotoxy(x,y1); cout<<"Ã";
-		gotoxy(x,y2); cout<<"Ã";
+		gotoxy(x,y1); cout<<"Í";
+		gotoxy(x,y2); cout<<"Í";
 	 }
   for(y=y1+1;y<y2;y++)
 	 {
-		gotoxy(x1,y); cout<<"Âº";
-		gotoxy(x2,y); cout<<"Âº";
+		gotoxy(x1,y); cout<<"º";
+		gotoxy(x2,y); cout<<"º";
 	 }
 }
 /*Tao ra menu tai toa do (x0,y0) voi n dong luu trong bien s
@@ -192,15 +192,15 @@ chon: dong menu hien thoi (khac mau voi cac dong khac) */
 void Ve_menu(int x0,int y0,int chon,int n,char *s[])
 {
   system("cls");
-  Khung(x0-2,y0-1,x0+35,y0+n);
+  Khung(x0-2,y0-1,x0+40,y0+n);
   for(int i=0;i<n;i++)
 	 if(i==chon) Write(s[i],x0,y0+i,CYAN);
 	 else Write(s[i],x0,y0+i,YELLOW);
   Write("Copyright (c) 2019 by Pham Anh Phuong.",x0-4,y0+n+5,10);
-  Write("Sinh vien thuc hien:",x0+40,y0,14);
-  Write("1. Le Thi Thanh Truyen",x0+40,y0+1,14);
-  Write("2. DO AN CHUYEN NGANH",x0+40,y0+2,14);
-  Write("3.	Lop: 18CNTT4 ",x0+40,y0+3,14);
+  Write("Sinh vien thuc hien:",x0+50,y0,14);
+  Write("1. Le Thi Thanh Truyen",x0+50,y0+1,14);
+  Write("2. DO AN CHUYEN NGANH",x0+50,y0+2,14);
+  Write("3. Lop: 18CNTT4 ",x0+50,y0+3,14);
 
 
 }
